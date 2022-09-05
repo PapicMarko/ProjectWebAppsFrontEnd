@@ -13,21 +13,22 @@
       :clickable="true"
       :draggable="true"
       @click="center=m.position"
-    />
+    >
+    </GmapMarker>
     </GmapMap>
   </div>
 </template>
 
 <script>
-  export default {
-      name: 'Map',
-      data() {
-          return{
-              coordinates: {
-                  lat:0,
-                  lng:0,
-              }
+export default {
+    name: 'Map',
+    data() {
+        return{
+            coordinates: {
+                lat:0,
+                lng:0,
             }
           }
         }
+      }
 </script>
