@@ -29,6 +29,13 @@ export default {
                 lng:0,
             }
           }
-        }
+        },
+        created(){
+        this.$getLocation({})
+        .then(coordinates => {
+            this.coordinates = coordinates;
+        }).catch(error => alert(error));
+
+    },
       }
 </script>
