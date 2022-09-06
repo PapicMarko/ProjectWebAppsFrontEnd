@@ -2,11 +2,30 @@
   <div id="app">
     <nav>
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link v-if="!checkJWT()" to="/about"> View Appointments</router-link>
+      <router-link v-if="!checkJWT()" to="/registershop">| Register Shop</router-link>
+      <router-link v-if="checkJWT()" to="/login">Login</router-link>
+      <a v-if="!checkJWT()" @click="logUserOut()"> | Logout</a>
     </nav>
     <router-view/>
   </div>
 </template>
+<script>
+
+export default {
+  methods:{
+    checkJWT(){
+      let token = localStorage.getItem("jwt");
+      if (token == null) return true;
+
+    },
+    logUserOut() {
+        localStorage.removeItem("jwt");
+        this.$router.push("/");
+      }
+    }
+  }
+</script>
 
 <style>
 #app {
